@@ -1,0 +1,11 @@
+*.swp
+.classpath
+.project
+.settings/
+bin/
+build/
+gradle/
+.gradle/
+*.txt
+*.json
+test/
