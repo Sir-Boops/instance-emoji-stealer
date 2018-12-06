@@ -1,10 +1,1 @@
-*.swp
-.classpath
-.project
-.settings/
-bin/
-build/
-.gradle/
-*.txt
-*.json
-test/
+instance-emoji-stealer*
