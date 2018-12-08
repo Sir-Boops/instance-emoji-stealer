@@ -22,6 +22,8 @@ func decode_json(domain string, payload string, path string) {
 	jobs := make(chan int, len(Emojis))
 	results := make(chan int, len(Emojis))
 
+	fmt.Println("Number of emojis to download:" ,len(Emojis))
+
 	// Start the workers
 	for w := 0; w <= 99; w++ {
 		go worker(Emojis, path, w, jobs, results)

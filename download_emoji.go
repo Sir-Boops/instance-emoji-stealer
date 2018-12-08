@@ -10,19 +10,36 @@ func download_emoji(url string, filename string, path string) {
 
 	if _, err := os.Stat(filepath.Join(path, filename)); os.IsNotExist(err) {
 		// File not there
-		webClient := http.Client {
-			Timeout: time.Second * 1}
 
-			res, err := webClient.Get(url);
+		tries := 0
+		is_done := false
 
-			if err == nil {
-				// No error yet
-				bodyBytes, err2 := ioutil.ReadAll(res.Body);
-				if err2 == nil {
-					// we goood
-					ioutil.WriteFile(filepath.Join(path, filename), bodyBytes, os.ModePerm)
-				}
-				defer res.Body.Close();
-			}
+		for tries < 2 && !is_done {
+			is_done = dl(url, filepath.Join(path, filename))
+			tries++
+		}
+
 	}
+}
+
+func dl(url string, fullpath string) bool {
+
+	webClient := http.Client {
+		Timeout: time.Second * 1}
+
+		res, err := webClient.Get(url);
+
+		is_good := false
+
+		if err == nil {
+			// No error yet
+			bodyBytes, err2 := ioutil.ReadAll(res.Body);
+			if err2 == nil {
+				// we goood
+				ioutil.WriteFile(fullpath, bodyBytes, os.ModePerm)
+				is_good = true
+			}
+			defer res.Body.Close();
+		}
+		return is_good
 }
