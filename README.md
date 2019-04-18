@@ -1,16 +1,10 @@
 # Instance emoji stealer
 It can't get much simpler
 
-How to
+How to build/use
 
-* Clone this repo and enter that dir
-
-* run ./gradlew build ( gradlew.bat build on windows )
-
-* The jarfile is located in build/libs/
-
-* Get the domain you want all the emojis from example 'mastodon.sergal.org'
-
-* Run the jar passing the domain example java -jar instance-emoji-stealer.jar mastodon.sergal.org That will have generated a folder full of emoji pngs and a tar.gz file if you want to steal all the emojis from said instance just take the created tar file else remove any emojis you don't want
-
-* Assuming you want all the emojos copy the created tar.gz file to your mastodon server and run tootctl emoji import targzfilenamehere.tar.gz and all those emojis are yours!
+* First off have golang installed
+* Clone this repo `git clone https://git.sergal.org/Sir-Boops/instance-emoji-stealer`
+* cd into the cloned dir `cd instance-emoji-stealer`
+* run `go build` to build
+* Finally to use run the newly created binary with the domain of the instance you want to steal from example `./instance-emoji-stealer mastodon.sergal.org`
